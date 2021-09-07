@@ -9,20 +9,25 @@
 
 OPENSSL = openssl
 
+baseName = rabbitmq
+
 ifndef PYTHON
 PYTHON := python3
 endif
 
 ifndef CN
-CN := $(shell hostname)
+# CN := $(shell hostname)
+CN := $(baseName)
 endif
 
 ifndef CLIENT_ALT_NAME
-CLIENT_ALT_NAME := $(shell hostname)
+# CLIENT_ALT_NAME := $(shell hostname)
+CLIENT_ALT_NAME := $(baseName)-client
 endif
 
 ifndef SERVER_ALT_NAME
-SERVER_ALT_NAME := $(shell hostname)
+# SERVER_ALT_NAME := $(shell hostname)
+SERVER_ALT_NAME := $(baseName)
 endif
 
 ifndef NUMBER_OF_PRIVATE_KEY_BITS
@@ -79,3 +84,4 @@ verify:
 
 help:
 	$(PYTHON) profile.py --help
+
